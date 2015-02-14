@@ -1,5 +1,6 @@
 package appewtc.masterung.bsrurestaurant;
 
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -8,13 +9,19 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class MyOpenHelper extends SQLiteOpenHelper{
 
-    public MyOpenHelper() {
-        super(null, null, null, 0);
+    //Explicit
+    private static final String DATABASE_NAME = "bsru.db";
+    private static final int DATABASE_VERSION = 1;
+    private static final String CREATE_USER_TABLE = "create table userTABLE (_id integer primary key, "+" User text, Password text, Name text);";
+
+
+    public MyOpenHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }   // Constructor
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        db.execSQL(CREATE_USER_TABLE);
     }
 
     @Override
