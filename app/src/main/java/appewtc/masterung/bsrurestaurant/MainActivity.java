@@ -42,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
 
         //Delete All Data
         deleteAllData();
-        
+
         //Synchronize JSON to SQLite
         synJSONtoSQLite();
 
