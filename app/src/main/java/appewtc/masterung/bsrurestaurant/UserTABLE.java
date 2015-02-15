@@ -2,6 +2,7 @@ package appewtc.masterung.bsrurestaurant;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
@@ -25,6 +26,42 @@ public class UserTABLE {
         readSQLite = objMyOpenHelper.getReadableDatabase();
 
     }   // Constructor
+
+    //Search User
+    public String[] searchUser(String strUser) {
+
+        try {
+
+            String strData[] = null;
+
+            Cursor objCursor = readSQLite.query(USER_TABLE, new String[] {COLUMN_ID_USER, COLUMN_USER, COLUMN_PASSWORD, COLUMN_NAME}, COLUMN_USER + "=?", new String[] {String.valueOf(strUser)}, null, null, null, null);
+
+            if (objCursor != null) {
+
+                if (objCursor.moveToFirst()) {
+
+                    strData = new String[objCursor.getColumnCount()];
+                    strData[0] = objCursor.getString(0);
+                    strData[1] = objCursor.getString(1);
+                    strData[2] = objCursor.getString(2);
+                    strData[3] = objCursor.getString(3);
+
+                }   // if2
+
+            }   // if1
+
+            objCursor.close();
+            return strData;
+
+        } catch (Exception e) {
+            return null;
+        }
+
+
+       // return new String[0];
+    }
+
+
 
     //Add Value to userTABLE
     public long addValeToUser(String strUser, String strPassword, String strName) {

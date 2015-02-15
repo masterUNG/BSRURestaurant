@@ -29,7 +29,7 @@ public class MainActivity extends ActionBarActivity {
     private UserTABLE objUserTABLE;
     private OrderTABLE objOrderTABLE;
     private EditText edtUser, edtPassword;
-    private String strUserChoose, strPasswordChoose;
+    private String strUserChoose, strPasswordChoose, strPasswordTrue, strName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +80,19 @@ public class MainActivity extends ActionBarActivity {
     }   //clickLogin
 
     private void checkUser() {
+
+        try {
+
+            String myData[] = objUserTABLE.searchUser(strUserChoose);
+            strPasswordTrue = myData[2];
+            strName = myData[3];
+
+            Log.d("bsru", "Wellcome ==> " + strName);
+
+        } catch (Exception e) {
+            MyAlertDialog objMyAlert = new MyAlertDialog();
+            objMyAlert.myDialog(MainActivity.this, "No User", "No " + strUserChoose + " in my Database");
+        }
 
     }   // checkUser
 
