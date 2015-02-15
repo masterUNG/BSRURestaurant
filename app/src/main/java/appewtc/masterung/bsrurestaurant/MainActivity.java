@@ -36,6 +36,9 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Bind Widget
+        bindWidget();
+
         //Create or Connect SQLite
         objUserTABLE = new UserTABLE(this);
         objOrderTABLE = new OrderTABLE(this);
@@ -51,6 +54,11 @@ public class MainActivity extends ActionBarActivity {
         synJSONtoSQLite();
 
     }   // onCreate
+
+    private void bindWidget() {
+        edtUser = (EditText) findViewById(R.id.edtUser);
+        edtPassword = (EditText) findViewById(R.id.edtPassword);
+    }   // bindWidget
 
     public void clickLogin(View view) {
 
