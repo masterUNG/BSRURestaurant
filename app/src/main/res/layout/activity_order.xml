@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Text"
-            android:id="@+id/textView"
+            android:id="@+id/txtShowOfficer"
             android:textSize="25dp"
             android:layout_gravity="center_horizontal" />
 
@@ -35,13 +35,16 @@
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/ragDesk"
             android:layout_gravity="center_horizontal">
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/one"
-                android:id="@+id/radioButton" />
+                android:id="@+id/radioButton"
+                android:enabled="true"
+                android:checked="true" />
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -97,6 +100,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Order"
+            android:onClick="clickOrder"
             android:id="@+id/button2"
             android:layout_weight="1" />
 
@@ -104,6 +108,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Read Order"
+            android:onClick="clickRead"
             android:id="@+id/button3"
             android:layout_weight="1" />
     </LinearLayout>
