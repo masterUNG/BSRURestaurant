@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -26,6 +28,8 @@ public class MainActivity extends ActionBarActivity {
 
     private UserTABLE objUserTABLE;
     private OrderTABLE objOrderTABLE;
+    private EditText edtUser, edtPassword;
+    private String strUserChoose, strPasswordChoose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +50,13 @@ public class MainActivity extends ActionBarActivity {
         //Synchronize JSON to SQLite
         synJSONtoSQLite();
 
-
     }   // onCreate
+
+    public void clickLogin(View view) {
+
+    }   //clickLogin
+
+
 
     private void deleteAllData() {
 
