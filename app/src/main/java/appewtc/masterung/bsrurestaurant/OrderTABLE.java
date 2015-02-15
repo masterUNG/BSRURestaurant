@@ -2,6 +2,7 @@ package appewtc.masterung.bsrurestaurant;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
@@ -26,6 +27,19 @@ public class OrderTABLE {
         readSQLite = objMyOpenHelper.getReadableDatabase();
 
     }  // Constructor
+
+    public Cursor readAllData() {
+
+        Cursor objCursor = readSQLite.query(ORDER_TABLE, new String[]{COLUMN_ID_ORDER, COLUMN_OFFICER, COLUMN_DRINK, COLUMN_FOOD, COLUMN_DESK}, null, null, null, null, null);
+
+        if (objCursor != null) {
+            objCursor.moveToFirst();
+        }
+
+        return objCursor;
+    }
+
+
 
     public long addValuetoOrder(String strOfficer, String strDrink, String strFood, String strDesk) {
 

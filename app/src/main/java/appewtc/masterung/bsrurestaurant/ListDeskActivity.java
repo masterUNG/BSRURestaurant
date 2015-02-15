@@ -1,13 +1,15 @@
 package appewtc.masterung.bsrurestaurant;
 
+import android.app.ListActivity;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
-import android.os.StrictMode;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SimpleCursorAdapter;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -22,14 +24,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 
-public class ListDeskActivity extends ActionBarActivity {
+public class ListDeskActivity extends ListActivity{
 
     private OrderTABLE objOrderTABLE;
+    private SimpleCursorAdapter objSimpleCursorAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_desk);
+        //setContentView(R.layout.activity_list_desk);
 
         objOrderTABLE = new OrderTABLE(this);
 
@@ -37,7 +41,19 @@ public class ListDeskActivity extends ActionBarActivity {
 
         synJSONtoOrder();
 
+        createListView();
+
     }   // onCreate
+
+    private void createListView() {
+
+        Cursor ListDesk = objOrderTABLE.readAllData();
+        String[] from = new String[]{OrderTABLE.COLUMN_DESK};
+        int[] target = new int[]{R.id.txtListDesk};
+        objSimpleCursorAdapter = new SimpleCursorAdapter(this, R.layout.activity_list_desk, ListDesk, from, target);
+        setListAdapter(objSimpleCursorAdapter);
+
+    }   //createListView
 
     private void synJSONtoOrder() {
 
