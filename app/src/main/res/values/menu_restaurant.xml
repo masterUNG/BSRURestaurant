@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="drink">
+
+        <item>น้ำเปล่า</item>
+        <item>โค้ก</item>
+        <item>กาแฟ</item>
+        <item>น้ำส้ม</item>
+        <item>เบียร์</item>
+        <item>น้ำชา</item>
+
+
+    </string-array>
+
+    <string-array name="food">
+
+        <item>ผลไม้รวม</item>
+        <item>ปลาดุกฟู</item>
+        <item>ยำแหนม</item>
+        <item>แปะซะ</item>
+        <item>กุ้งแช่น้ำปลา</item>
+
+
+    </string-array>
+
+
+</resources>

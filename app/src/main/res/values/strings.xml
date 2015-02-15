@@ -13,6 +13,7 @@
     <string name="six">โต้ะหก</string>
     <string name="seven">โต้ะเจ็ด</string>
     <string name="eight">โต้ะแปด</string>
+    <string name="title_activity_list_desk">ListDeskActivity</string>
 
 
 </resources>
