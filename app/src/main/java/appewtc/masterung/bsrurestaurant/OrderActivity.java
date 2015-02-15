@@ -2,6 +2,7 @@ package appewtc.masterung.bsrurestaurant;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
@@ -223,6 +224,9 @@ public class OrderActivity extends ActionBarActivity {
 
     public void clickRead(View view) {
 
+        Intent objIntent = new Intent(OrderActivity.this, ListDeskActivity.class);
+        startActivity(objIntent);
+        finish();
     }   // clickRead
 
     @Override
