@@ -1,5 +1,6 @@
 package appewtc.masterung.bsrurestaurant;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.StrictMode;
@@ -89,12 +90,33 @@ public class MainActivity extends ActionBarActivity {
 
             Log.d("bsru", "Wellcome ==> " + strName);
 
+            checkPassword();
+
         } catch (Exception e) {
             MyAlertDialog objMyAlert = new MyAlertDialog();
             objMyAlert.myDialog(MainActivity.this, "No User", "No " + strUserChoose + " in my Database");
         }
 
     }   // checkUser
+
+    private void checkPassword() {
+
+        if (strPasswordChoose.equals(strPasswordTrue)) {
+
+            //Intent to OrderActivity
+            Intent objIntent = new Intent(MainActivity.this, OrderActivity.class);
+            objIntent.putExtra("Name", strName);
+            startActivity(objIntent);
+            finish();
+
+        } else {
+
+            MyAlertDialog objMyAlert = new MyAlertDialog();
+            objMyAlert.myDialog(MainActivity.this, "Password False", "Please Try Again Password False");
+
+        }
+
+    }   // checkPassword
 
 
     private void deleteAllData() {
