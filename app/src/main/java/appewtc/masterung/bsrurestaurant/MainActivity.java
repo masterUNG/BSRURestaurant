@@ -62,8 +62,26 @@ public class MainActivity extends ActionBarActivity {
 
     public void clickLogin(View view) {
 
+        strUserChoose = edtUser.getText().toString().trim();
+        strPasswordChoose = edtPassword.getText().toString().trim();
+
+        if (strUserChoose.equals("") || strPasswordChoose.equals("") ) {
+
+            MyAlertDialog objMyAlert = new MyAlertDialog();
+            objMyAlert.myDialog(MainActivity.this, "มีช่องว่าง", "กรุณากรอกทุกช่อง");
+
+        } else {
+
+            //Check User
+            checkUser();
+
+        }
+
     }   //clickLogin
 
+    private void checkUser() {
+
+    }   // checkUser
 
 
     private void deleteAllData() {
