@@ -1,6 +1,8 @@
 package appewtc.masterung.bsrurestaurant;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
@@ -9,6 +11,8 @@ import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import org.apache.http.HttpEntity;
@@ -44,6 +48,43 @@ public class ListDeskActivity extends ListActivity{
         createListView();
 
     }   // onCreate
+
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+
+        Cursor objCursor = (Cursor) l.getItemAtPosition(position);
+        String strOfficer = objCursor.getString(objCursor.getColumnIndex(OrderTABLE.COLUMN_OFFICER));
+        String strDrink = objCursor.getString(objCursor.getColumnIndex(OrderTABLE.COLUMN_DRINK));
+        String strFood = objCursor.getString(objCursor.getColumnIndex(OrderTABLE.COLUMN_FOOD));
+        String strDesk = objCursor.getString(objCursor.getColumnIndex(OrderTABLE.COLUMN_DESK));
+
+        //ShowAlert
+        showAlert(strOfficer, strDrink, strFood, strDesk);
+
+    }   // onListItemClick
+
+    private void showAlert(String strOfficer, String strDrink, String strFood, String strDesk) {
+
+        AlertDialog.Builder objAlert = new AlertDialog.Builder(this);
+        objAlert.setIcon(R.drawable.icon_myaccount);
+        objAlert.setTitle("Order");
+        objAlert.setMessage("Officer = " + strOfficer + "\n" +
+                "Drink = " + strDrink + "\n" +
+                "Food = " + strFood + "\n" +
+                "Desk = " + strDesk);
+        objAlert.setCancelable(false);
+        objAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        objAlert.show();
+
+
+    }   // showAlert
 
     private void createListView() {
 
